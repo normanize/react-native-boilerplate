@@ -6,7 +6,6 @@ import { APP_CONFIG_INITIAL_STATE } from 'app/store/states';
 /* ------------- Reducers ------------- */
 
 export const setLoadingScreen = (state, { payload }) => {
-    console.log('setLoadingScreen', payload)
     return {
         ...state,
         loading: payload,

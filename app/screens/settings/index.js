@@ -4,8 +4,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AppConfigTypes } from 'app/store'
 
 import { View, Text } from 'react-native';
+import {
+    PageLoader,
+    ScrollableContent,
+    DisplayProfile,
+    AppVersion,
+    BiometricSettings
+} from 'app/components'
 
-import { PageLoader } from 'app/components'
+import styles from './styles';
 
 const SettingsScreen = () => {
 
@@ -26,17 +33,22 @@ const SettingsScreen = () => {
                 type: AppConfigTypes.SET_LOADING_SCREEN,
                 payload: false
             })
-        }, 5000)
+        }, 3000)
     }, [])
 
     return (
-        <View>
+        <View style={styles.container}>
             {loading
                 ? <PageLoader />
                 : (
-                    <Text>Settings screen</Text>
-                )
-            }
+                    <ScrollableContent>
+                        <View style={styles.displayProfileContainer}>
+                            <DisplayProfile />
+                        </View>
+                        <BiometricSettings />
+                        <AppVersion />
+                    </ScrollableContent>
+                )}
         </View>
     );
 };

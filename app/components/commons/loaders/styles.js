@@ -3,12 +3,12 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
     // page loader
     pageLoaderContainer: {
-        display: 'flex',
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100%',
+        backgroundColor: 'rgba(0,0,0,0.3)'
     },
-    pageLoaderAnimationStyle: {
+    pageLoaderAnimation: {
         height: 150
     }
 })

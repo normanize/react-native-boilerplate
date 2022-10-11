@@ -26,7 +26,7 @@ const HomeScreen = () => {
                 type: AppConfigTypes.SET_LOADING_SCREEN,
                 payload: false
             })
-        }, 5000)
+        }, 3000)
     }, [])
 
     return (

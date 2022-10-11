@@ -3,6 +3,7 @@ import { resettableReducer } from 'reduxsauce'
 
 import {
     appConfigReducer,
+    settingsReducer
 } from 'app/store/reducers';
 
 export const initStore = () => {
@@ -12,6 +13,7 @@ export const initStore = () => {
   /***** REDUCERS *****/
   const reducers = combineReducers({
     appConfig: appConfigReducer, // -> not resettable
+    settings: resettable(settingsReducer),
   });
 
   /***** STORE *****/

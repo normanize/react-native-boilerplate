@@ -1,4 +1,4 @@
-const PADDING = {
+export const Padding = {
     NONE: 0,
     XXS: 2,
     XS: 5,
@@ -9,7 +9,7 @@ const PADDING = {
     XXL: 32,
 };
 
-const MARGIN = {
+export const Margin = {
     NONE: 0,
     XXS: 2,
     XS: 5,
@@ -20,7 +20,7 @@ const MARGIN = {
     XXL: 32,
 };
 
-const FONT_SIZE = {
+export const FontSize = {
     XXS: 10,
     XS: 12,
     SM: 14,
@@ -31,12 +31,11 @@ const FONT_SIZE = {
     XXXL: 32,
 };
 
-const RADIUS = {
+export const Radius = {
     NONE: 0,
     SM: 8,
     MD: 12,
     LG: 15,
     XL: 20,
+    ROUNDED: 50
 };
-
-export { PADDING, MARGIN, FONT_SIZE, RADIUS };
