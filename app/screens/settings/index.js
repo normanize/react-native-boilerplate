@@ -9,7 +9,8 @@ import {
     ScrollableContent,
     DisplayProfile,
     AppVersion,
-    BiometricSettings
+    BiometricSettings,
+    ResetStorage
 } from 'app/components'
 
 import styles from './styles';
@@ -46,6 +47,7 @@ const SettingsScreen = () => {
                             <DisplayProfile />
                         </View>
                         <BiometricSettings />
+                        <ResetStorage />
                         <AppVersion />
                     </ScrollableContent>
                 )}

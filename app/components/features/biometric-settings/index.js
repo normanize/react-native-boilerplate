@@ -22,7 +22,7 @@ const BiometricSettings = () => {
     useEffect(() => {
         (async () => {
             const response = await getStorageData('settings_biometric');
-            if (response.success) {
+            if (response && response.success) {
                 dispatch({
                     type: SettingsTypes.SET_BIOMETRIC,
                     payload: response.data ? response.data : false
@@ -37,7 +37,7 @@ const BiometricSettings = () => {
      */
     const onSwitch = async (e) => {
         const response = await storeStorageData('settings_biometric', e);
-        if (response.success) {
+        if (response && response.success) {
             dispatch({
                 type: SettingsTypes.SET_BIOMETRIC,
                 payload: e
