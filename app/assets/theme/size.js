@@ -18,6 +18,7 @@ export const Margin = {
     LG: 16,
     XL: 20,
     XXL: 32,
+    XXXL: 40,
 };
 
 export const FontSize = {

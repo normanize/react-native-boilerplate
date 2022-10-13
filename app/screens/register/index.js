@@ -10,20 +10,21 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import {
     LOGIN_TEXT,
     REGISTER_TEXT,
-    LOGIN_HEADING_TEXT,
-    LOGIN_EMAIL_ADDRESS_PLACEHOLDER,
-    LOGIN_PASSWORD_PLACEHOLDER,
-    LOGIN_DONT_HAVE_ACCOUNT_TEXT,
-    PASSWORD_MINLENGTH,
+    REGISTER_HEADING_TEXT,
+    REGISTER_NAME_PLACEHOLDER,
+    REGISTER_EMAIL_ADDRESS_PLACEHOLDER,
+    REGISTER_PASSWORD_PLACEHOLDER,
+    SIGN_IN_YOUR_ACCOUNT_TEXT,
     VALIDATION_MSG
 } from 'app/constants'
 
 import styles from './styles'
 
-const Login = () => {
+const Register = () => {
 
     const { control, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
+            name: null,
             email: null,
             password: null
         }
@@ -33,15 +34,8 @@ const Login = () => {
 
     const onBackPressed = () => navigation.goBack()
 
-    const onRegister = () => navigation.navigate('RegisterScreen')
-
-    const onLogin = ({ email, password }) => {
-        if (
-            email === 'admin@gmail.com' &&
-            password === 'secret'
-        ) {
-            // write some code to authenticate user
-        }
+    const onRegister = ({ name, email, password }) => {
+        // write some code to register the user
     }
 
     return (
@@ -50,7 +44,20 @@ const Login = () => {
                 <Ionicons name="arrow-back" size={25} onPress={onBackPressed} />
                 <ScrollContent>
                     <View style={styles.content}>
-                        <Text style={styles.heading}>{LOGIN_HEADING_TEXT}</Text>
+                        <Text style={styles.heading}>{REGISTER_HEADING_TEXT}</Text>
+
+                        <Input
+                            {...{
+                                control,
+                                errors
+                            }}
+                            name="name"
+                            placeholder={REGISTER_NAME_PLACEHOLDER}
+                            rules={{
+                                required: { value: true, message: VALIDATION_MSG.NAME_REQUIRED }
+                            }}
+                            style={styles.input}
+                        />
 
                         <Input
                             {...{
@@ -58,7 +65,7 @@ const Login = () => {
                                 errors
                             }}
                             name="email"
-                            placeholder={LOGIN_EMAIL_ADDRESS_PLACEHOLDER}
+                            placeholder={REGISTER_EMAIL_ADDRESS_PLACEHOLDER}
                             autoCapitalize={'none'}
                             rules={{
                                 required: { value: true, message: VALIDATION_MSG.EMAIL_REQUIRED }
@@ -72,23 +79,23 @@ const Login = () => {
                                 errors
                             }}
                             name="password"
-                            placeholder={LOGIN_PASSWORD_PLACEHOLDER}
+                            placeholder={REGISTER_PASSWORD_PLACEHOLDER}
                             secureTextEntry={true}
                             autoCapitalize={'none'}
                             rules={{
                                 required: { value: true, message: VALIDATION_MSG.PASSWORD_REQUIRED },
-                                minLength: { value: 8, message: VALIDATION_MSG.PASSWORD_MINLENGTH }
+                                minLength: { value: 8, message: VALIDATION_MSG.PASSWORD_MINLENGTH },
                             }}
                             style={styles.input}
                         />
 
-                        <Button style={styles.btnLogin} onPress={handleSubmit(onLogin)}>
-                            <Text style={styles.btnText}>{LOGIN_TEXT}</Text>
+                        <Button style={styles.btnRegister} onPress={handleSubmit(onRegister)}>
+                            <Text style={styles.btnRegisterText}>{REGISTER_TEXT}</Text>
                         </Button>
 
-                        <Text style={styles.noAccountText}>{LOGIN_DONT_HAVE_ACCOUNT_TEXT}</Text>
-                        <Button style={styles.btnRegister} onPress={onRegister}>
-                            <Text style={styles.btnRegisterText}>{REGISTER_TEXT}</Text>
+                        <Text style={styles.signInText}>{SIGN_IN_YOUR_ACCOUNT_TEXT}</Text>
+                        <Button style={styles.btnLogin} onPress={onBackPressed}>
+                            <Text style={styles.btnText}>{LOGIN_TEXT}</Text>
                         </Button>
                     </View>
                 </ScrollContent>
@@ -97,4 +104,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;

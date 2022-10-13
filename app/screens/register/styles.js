@@ -24,28 +24,28 @@ const styles = StyleSheet.create({
     },
     btnLogin: {
         marginTop: Margin.LG,
-        paddingHorizontal: 120,
+        paddingHorizontal: 118,
         paddingVertical: Padding.SM,
-        backgroundColor: Colors.PRIMARY,
+        borderWidth: 1,
         borderRadius: Radius.SM
     },
     btnText: {
-        color: Colors.WHITE,
+        color: Colors.BLACK,
         fontWeight: 'bold'
     },
-    noAccountText: {
+    signInText: {
         marginTop: Margin.XXXL
     },
     btnRegister: {
         marginTop: Margin.LG,
         paddingHorizontal: 110,
         paddingVertical: Padding.SM,
-        borderWidth: 1,
+        backgroundColor: Colors.PRIMARY,
         borderColor: Colors.GREY,
         borderRadius: Radius.SM
     },
     btnRegisterText: {
-        color: Colors.BLACK,
+        color: Colors.WHITE,
         fontWeight: 'bold'
     }
 })
