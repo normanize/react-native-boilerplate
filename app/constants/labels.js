@@ -21,7 +21,7 @@ export const LOGIN_DONT_HAVE_ACCOUNT_TEXT = 'Don\'t have an account?'
 
 // Register
 export const REGISTER_TEXT = 'Register'
-export const REGISTER_HEADING_TEXT = 'Login your account'
+export const REGISTER_HEADING_TEXT = 'Create your account'
 export const REGISTER_NAME_PLACEHOLDER = 'Enter name'
 export const REGISTER_EMAIL_ADDRESS_PLACEHOLDER = 'Enter email address'
 export const REGISTER_PASSWORD_PLACEHOLDER = 'Enter password'
