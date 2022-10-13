@@ -6,7 +6,7 @@ import { AppConfigTypes } from 'app/store'
 import { View, Text } from 'react-native';
 import {
     PageLoader,
-    ScrollableContent,
+    ScrollContent,
     DisplayProfile,
     AppVersion,
     BiometricSettings,
@@ -42,14 +42,14 @@ const SettingsScreen = () => {
             {loading
                 ? <PageLoader />
                 : (
-                    <ScrollableContent>
+                    <ScrollContent>
                         <View style={styles.displayProfileContainer}>
                             <DisplayProfile />
                         </View>
                         <BiometricSettings />
                         <ResetStorage />
                         <AppVersion />
-                    </ScrollableContent>
+                    </ScrollContent>
                 )}
         </View>
     );

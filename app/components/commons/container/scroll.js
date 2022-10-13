@@ -1,20 +1,23 @@
 import React from 'react';
 import { ScrollView } from 'react-native'
 
-const ScrollableContent = ({ 
+import styles from './styles';
+
+const ScrollContent = ({
     horizontal = false,
     showsVerticalScrollIndicator = false,
     showsHorizontalScrollIndicator = false,
-    children, 
-    ...props 
+    children,
+    ...props
 }) => {
     return (
         <ScrollView
             {...{
                 horizontal,
                 showsVerticalScrollIndicator,
-                showsHorizontalScrollIndicator
+                showsHorizontalScrollIndicator,
             }}
+            style={styles.scrollContainer}
             {...props}
         >
             {children}
@@ -22,4 +25,4 @@ const ScrollableContent = ({
     );
 };
 
-export default ScrollableContent;
+export default ScrollContent;

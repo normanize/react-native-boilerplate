@@ -4,5 +4,8 @@ import { APP_CONFIG } from 'config/dev'
 
 export const SETTINGS_INITIAL_STATE = {
     biometric: false,
-    appVersion: APP_CONFIG.version
+    appVersion: APP_CONFIG.version,
+
+    // alert
+    showResetDataAlert: false
 };

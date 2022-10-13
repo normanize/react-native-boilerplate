@@ -5,9 +5,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SettingsTypes } from 'app/store'
 import { getStorageData, storeStorageData } from 'app/utilities'
 
+import { BIOMETRIC_LOGIN_TEXT } from 'app/constants'
+
 import { View, Text } from 'react-native';
 import { ToggleSwitch } from 'app/components'
-
 import styles from './styles'
 
 const BiometricSettings = () => {
@@ -47,7 +48,7 @@ const BiometricSettings = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Biometric</Text>
+            <Text style={styles.title}>{BIOMETRIC_LOGIN_TEXT}</Text>
             <ToggleSwitch
                 onChange={onSwitch}
                 value={biometric}

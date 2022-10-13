@@ -1,20 +1,29 @@
+// Container
+import MainContent from './container/main'
+import ScrollContent from './container/scroll'
 // Loaders 
 import PageLoader from './loaders/page-loader'
-// ScrollView
-import ScrollableContent from './scrollview'
+// Input
+import Input from './input'
 // Button
 import Button from './button'
 // Image
 import OptimizeImage from './image/optimize-image'
 // Switch
 import ToggleSwitch from './switch'
+// Alert
+import ConfirmAlert from './alert/confirm'
 
 export {
+    // Container
+    MainContent,
+    ScrollContent,
+
     // Loaders
     PageLoader,
 
-    // ScrollView
-    ScrollableContent,
+    // Input
+    Input,
 
     // Button
     Button,
@@ -24,4 +33,7 @@ export {
 
     // Switch
     ToggleSwitch,
+
+    // Alert
+    ConfirmAlert,
 }

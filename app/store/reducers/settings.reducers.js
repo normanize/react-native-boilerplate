@@ -12,8 +12,16 @@ export const setBiometric = (state, { payload }) => {
     };
 };
 
+export const setResetDataAlert = (state, { payload }) => {
+    return {
+        ...state,
+        showResetDataAlert: payload,
+    };
+};
+
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const settingsReducer = createReducer(SETTINGS_INITIAL_STATE, {
     [SettingsTypes.SET_BIOMETRIC]: setBiometric,
+    [SettingsTypes.SET_RESET_DATA_ALERT]: setResetDataAlert,
 });

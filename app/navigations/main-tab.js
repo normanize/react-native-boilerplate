@@ -1,9 +1,8 @@
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { HomeScreen, SettingsScreen } from 'app/screens/index'
+import { HomeScreen, SettingsScreen } from 'app/screens'
 
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const BottomTab = createBottomTabNavigator();
 
@@ -28,15 +27,13 @@ const MainTab = () => {
     })
 
     return (
-        <SafeAreaProvider>
-            <BottomTab.Navigator
-                initialRouteName='Home'
-                screenOptions={screenOptions}
-            >
-                <BottomTab.Screen name="Home" component={HomeScreen} />
-                <BottomTab.Screen name="Settings" component={SettingsScreen} />
-            </BottomTab.Navigator>
-        </SafeAreaProvider>
+        <BottomTab.Navigator
+            initialRouteName='Home'
+            screenOptions={screenOptions}
+        >
+            <BottomTab.Screen name="Home" component={HomeScreen} />
+            <BottomTab.Screen name="Settings" component={SettingsScreen} />
+        </BottomTab.Navigator>
     );
 };
 
