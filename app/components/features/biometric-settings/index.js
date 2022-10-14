@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { SettingsTypes } from 'app/store'
-import { getStorageData, storeStorageData } from 'app/utilities'
+import { getStorageData, storeStorageData, biometryIsSensorAvailable } from 'app/utilities'
 
 import { BIOMETRIC_LOGIN_TEXT } from 'app/constants'
 
@@ -12,7 +12,11 @@ import { ToggleSwitch } from 'app/components'
 import styles from './styles'
 
 const BiometricSettings = () => {
-    const { biometric } = useSelector(state => state.settings);
+    const {
+        biometricEnable,
+        biometricSensorType,
+        biometricIsSensorAvailable
+    } = useSelector(state => state.settings);
 
     const dispatch = useDispatch();
 
@@ -21,24 +25,38 @@ const BiometricSettings = () => {
      * during the initialization of the screen
      */
     useEffect(() => {
-        (async () => {
-            const response = await getStorageData('settings_biometric');
-            if (response && response.success) {
-                dispatch({
-                    type: SettingsTypes.SET_BIOMETRIC,
-                    payload: response.data ? response.data : false
-                })
-            }
-        })()
+        init()
     }, [])
+
+    const init = async () => {
+        const response = await getStorageData('settings_biometric');
+        if (response && response.success) {
+            dispatch({
+                type: SettingsTypes.SET_BIOMETRIC,
+                payload: response.data ? response.data : false
+            })
+        }
+    }
 
     /**
      * This method will handle the 
      * changes of the biometric enable/disable
      */
     const onSwitch = async (e) => {
-        const response = await storeStorageData('settings_biometric', e);
-        if (response && response.success) {
+        if (!biometricIsSensorAvailable) {
+            return;
+        }
+
+        const { success: enableSuccess } = await storeStorageData(
+            'settings_biometric_enabled',
+            e
+        );
+        const { success: typeSuccess } = await storeStorageData(
+            'settings_biometric_type',
+            biometricSensorType
+        );
+
+        if (enableSuccess && typeSuccess) {
             dispatch({
                 type: SettingsTypes.SET_BIOMETRIC,
                 payload: e
@@ -51,7 +69,7 @@ const BiometricSettings = () => {
             <Text style={styles.title}>{BIOMETRIC_LOGIN_TEXT}</Text>
             <ToggleSwitch
                 onChange={onSwitch}
-                value={biometric}
+                value={biometricEnable}
             />
         </View>
     );

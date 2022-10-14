@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { STORAGE_RESPONSE_MSG } from 'app/constants'
 
 /**
  * Saving the data in localstorage
@@ -16,7 +17,7 @@ export const storeStorageData = async (key, value) => {
     } catch (e) {
         return {
             error: true,
-            message: "Failed to store the data from storage."
+            message: STORAGE_RESPONSE_MSG.STORE_STORAGE_FAILED
         }
     }
 }
@@ -38,7 +39,7 @@ export const getStorageData = async (key) => {
     } catch (e) {
         return {
             error: true,
-            message: "Failed to get the data from storage."
+            message: STORAGE_RESPONSE_MSG.GET_STORAGE_FAILED
         }
     }
 }
@@ -55,7 +56,7 @@ export const resetStorageData = async (key) => {
     } catch (e) {
         return {
             error: true,
-            message: "Failed to reset all storage data."
+            message: STORAGE_RESPONSE_MSG.RESET_STORAGE_FAILED
         }
     }
 }

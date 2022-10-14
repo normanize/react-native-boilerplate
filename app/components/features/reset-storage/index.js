@@ -6,7 +6,8 @@ import { SettingsTypes } from 'app/store'
 import {
     resetStorageData,
     successMessage,
-    dismissMessage
+    dismissMessage,
+    biometryIsSensorAvailable
 } from 'app/utilities'
 
 import {
@@ -32,7 +33,7 @@ const ResetStorage = () => {
         })
     }
 
-    const cancelDelete = () => {
+    const cancelReset = () => {
         dispatch({
             type: SettingsTypes.SET_RESET_DATA_ALERT,
             payload: false
@@ -46,13 +47,27 @@ const ResetStorage = () => {
     const confirmDelete = async () => {
         const response = await resetStorageData()
         if (response && response.success) {
-            dispatch({
-                type: 'RESET'
-            })
+            dispatch({ type: 'RESET' });
 
-            successMessage(SUCCESS_RESET_DATA_MSG)
+            reinitializeSetting();
+
+            successMessage(SUCCESS_RESET_DATA_MSG);
             await new Promise(resolve => setTimeout(resolve, 1500));
-            dismissMessage()
+            dismissMessage();
+        }
+    }
+
+    const reinitializeSetting = async () => {
+        // check biometry sensor
+        const sensor = await biometryIsSensorAvailable();
+        if (sensor.available) {
+            dispatch({
+                type: SettingsTypes.SET_BIOMETRIC_SENSOR_AVAILABLE,
+                payload: {
+                    available: sensor.available,
+                    type: sensor.available ? sensor.type : null
+                }
+            })
         }
     }
 
@@ -64,7 +79,7 @@ const ResetStorage = () => {
                     show={showResetDataAlert}
                     title={RESET_DATA_ALERT_TEXT.TITLE}
                     message={RESET_DATA_ALERT_TEXT.MESSAGE}
-                    onCancel={cancelDelete}
+                    onCancel={cancelReset}
                     onConfirm={confirmDelete}
                 />
             }

@@ -11,6 +11,7 @@ export const RESET_DATA_ALERT_TEXT = {
     TITLE: 'Reset Data',
     MESSAGE: 'Are you sure?'
 }
+export const BIOMETRY_PROMPT_TEXT = 'Scan your fingerprint on the device scanner to continue'
 
 // Login
 export const LOGIN_TEXT = 'Login'

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { AppConfigTypes } from 'app/store'
+import { AppConfigTypes, SettingsTypes } from 'app/store'
 
 import { View, Text } from 'react-native';
 import {
@@ -17,13 +17,16 @@ import styles from './styles';
 
 const SettingsScreen = () => {
 
-    const {
-        loading
-    } = useSelector(state => state.appConfig)
+    const { loading } = useSelector(state => state.appConfig)
+    const { biometricIsSensorAvailable } = useSelector(state => state.settings)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
+        init()
+    }, [])
+
+    const init = async () => {
         dispatch({
             type: AppConfigTypes.SET_LOADING_SCREEN,
             payload: true
@@ -35,7 +38,7 @@ const SettingsScreen = () => {
                 payload: false
             })
         }, 3000)
-    }, [])
+    }
 
     return (
         <View style={styles.container}>
@@ -46,7 +49,7 @@ const SettingsScreen = () => {
                         <View style={styles.displayProfileContainer}>
                             <DisplayProfile />
                         </View>
-                        <BiometricSettings />
+                        {biometricIsSensorAvailable && <BiometricSettings />}
                         <ResetStorage />
                         <AppVersion />
                     </ScrollContent>
