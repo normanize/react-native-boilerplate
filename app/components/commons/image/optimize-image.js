@@ -11,9 +11,9 @@ const OptimizeImage = ({
         <FastImage
             source={{
                 uri,
-                priority
+                priority,
+                resizeMode,
             }}
-            resizeMode
             {...props}
         />
     );

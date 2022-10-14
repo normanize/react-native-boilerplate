@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 
-import { InitializationScreen } from 'app/screens/index';
+import { 
+    InitializationScreen,
+    LoginScreen,
+    RegisterScreen
+} from 'app/screens';
 import MainNavigationScreen from './main-tab';
-import { LoginScreen, RegisterScreen } from 'app/screens';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const MainStack = createNativeStackNavigator();

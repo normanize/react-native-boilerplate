@@ -47,7 +47,12 @@ const Login = () => {
     return (
         <MainContent>
             <View style={styles.container}>
-                <Ionicons name="arrow-back" size={25} onPress={onBackPressed} />
+                <Ionicons 
+                    name="arrow-back" 
+                    size={25} 
+                    onPress={onBackPressed} 
+                    style={styles.arrowBack}
+                />
                 <ScrollContent>
                     <View style={styles.content}>
                         <Text style={styles.heading}>{LOGIN_HEADING_TEXT}</Text>

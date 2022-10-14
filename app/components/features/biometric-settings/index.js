@@ -29,7 +29,7 @@ const BiometricSettings = () => {
     }, [])
 
     const init = async () => {
-        const response = await getStorageData('settings_biometric');
+        const response = await getStorageData('settings_biometric_enabled');
         if (response && response.success) {
             dispatch({
                 type: SettingsTypes.SET_BIOMETRIC,

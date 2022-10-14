@@ -10,6 +10,9 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center'
     },
+    arrowBack: {
+        marginTop: Margin.LG
+    },
     heading: {
         fontSize: FontSize.MD,
         fontWeight: '500',

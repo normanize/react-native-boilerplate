@@ -3,9 +3,14 @@ import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native'
 
 import { SettingsTypes } from 'app/store'
-import { biometryIsSensorAvailable, biometryPrompt, getStorageData, exitApp } from 'app/utilities'
+import {
+    biometryIsSensorAvailable,
+    biometryPrompt,
+    getStorageData,
+    exitApp
+} from 'app/utilities'
+import { Platform, View } from 'react-native';
 
-import { Platform } from 'react-native';
 import Lottie from 'lottie-react-native';
 import styles from './styles'
 

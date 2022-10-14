@@ -6,6 +6,9 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: Padding.SM,
     },
+    arrowBack: {
+        marginTop: Margin.LG
+    },
     content: {
         flex: 1,
         alignItems: 'center'
