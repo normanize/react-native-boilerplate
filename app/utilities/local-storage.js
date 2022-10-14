@@ -35,6 +35,11 @@ export const getStorageData = async (key) => {
                 success: true,
                 data: JSON.parse(value)
             }
+        } else {
+            return {
+                success: false,
+                data: null
+            }
         }
     } catch (e) {
         return {

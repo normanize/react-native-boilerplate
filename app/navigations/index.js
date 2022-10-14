@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { InitializationScreen } from 'app/screens/index';
 import MainNavigationScreen from './main-tab';

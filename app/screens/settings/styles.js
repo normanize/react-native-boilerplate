@@ -6,6 +6,9 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.WHITE
     },
+    content: {
+        flex: 1,
+    },
     displayProfileContainer: {
         paddingVertical: Padding.MD,
         borderColor: Colors.DEFAULT,

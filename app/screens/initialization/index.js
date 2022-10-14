@@ -36,16 +36,35 @@ const InitializatinScreen = () => {
         })
 
         if (sensor.available) {
-            const { data: isEnabled } = await getStorageData('settings_biometric_enabled');
-            const { data: type } = await getStorageData('settings_biometric_type');
+            const {
+                success: isEnabledSuccess,
+                data: isEnabled
+            } = await getStorageData(
+                'settings_biometric_enabled'
+            );
 
-            if (isEnabled && type === sensor.type) {
+            const {
+                success: isTypeSuccess,
+                data: type
+            } = await getStorageData(
+                'settings_biometric_type'
+            );
+
+            if (
+                isEnabledSuccess &&
+                isTypeSuccess &&
+                type === sensor.type
+            ) {
                 biometryVerification()
             } else {
                 setTimeout(() => {
                     resetNavigation()
                 }, 2500)
             }
+        } else {
+            setTimeout(() => {
+                resetNavigation()
+            }, 2500)
         }
     }
 

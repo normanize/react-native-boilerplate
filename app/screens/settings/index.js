@@ -10,7 +10,8 @@ import {
     DisplayProfile,
     AppVersion,
     BiometricSettings,
-    ResetStorage
+    ResetStorage,
+    NetworkState
 } from 'app/components'
 
 import styles from './styles';
@@ -45,14 +46,18 @@ const SettingsScreen = () => {
             {loading
                 ? <PageLoader />
                 : (
-                    <ScrollContent>
-                        <View style={styles.displayProfileContainer}>
-                            <DisplayProfile />
-                        </View>
-                        {biometricIsSensorAvailable && <BiometricSettings />}
-                        <ResetStorage />
-                        <AppVersion />
-                    </ScrollContent>
+                    <View style={styles.content}>
+                        <ScrollContent>
+                            <View style={styles.displayProfileContainer}>
+                                <DisplayProfile />
+                            </View>
+                            {biometricIsSensorAvailable && <BiometricSettings />}
+                            <ResetStorage />
+                            <AppVersion />
+                        </ScrollContent>
+
+                        <NetworkState />
+                    </View>
                 )}
         </View>
     );

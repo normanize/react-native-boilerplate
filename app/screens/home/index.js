@@ -5,7 +5,8 @@ import { AppConfigTypes } from 'app/store'
 
 import { View, Text, Button } from 'react-native';
 
-import { PageLoader } from 'app/components'
+import { PageLoader, ScrollContent, NetworkState } from 'app/components'
+import styles from './styles'
 
 const HomeScreen = () => {
 
@@ -30,13 +31,19 @@ const HomeScreen = () => {
             })
         }, 3000)
     }
-    
+
     return (
-        <View>
+        <View style={styles.container}>
             {loading
                 ? <PageLoader />
                 : (
-                    <Text>Home screen</Text>
+                    <View style={styles.content}>
+                        <ScrollContent>
+                            <Text>Home screen</Text>
+                        </ScrollContent>
+
+                        <NetworkState />
+                    </View>
                 )
             }
         </View>

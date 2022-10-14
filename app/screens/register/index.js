@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useForm } from "react-hook-form";
 
 import { View, Text, TouchableOpacity } from 'react-native'
-import { MainContent, ScrollContent, Button, Input } from 'app/components'
+import { MainContent, ScrollContent, Button, Input, NetworkState } from 'app/components'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import {
@@ -100,6 +100,8 @@ const Register = () => {
                     </View>
                 </ScrollContent>
             </View>
+
+            <NetworkState />
         </MainContent>
     );
 };
